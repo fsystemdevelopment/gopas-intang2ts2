@@ -1,0 +1,47 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<mat-card class="order">
+  <form novalidate #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+    <h3>Objednávka:</h3>
+
+    <iconized-button [(ngModel)]="orderForm.meal" name="meal" #mealCtrl="ngModel"></iconized-button>
+    <mat-hint class="error" *ngIf="mealCtrl.invalid && f.submitted">
+      Vyberte něco!
+    </mat-hint>
+
+    <div fxLayout="column">
+      <mat-form-field>
+        <input matInput name="amount" placeholder="Počet jídel" type="number" [(ngModel)]="orderForm.amount"
+          #amountCtrl="ngModel" required>
+        <mat-error *ngIf="amountCtrl.hasError('required')">
+          Toto pole je povinné
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="5%"></div>
+
+    <div fxLayout="column">
+      <mat-form-field >
+        <input matInput name="pickupTime" placeholder="Čas vyzvednutí" type="text" [(ngModel)]="orderForm.pickupTime"
+          #pickupTimeCtrl="ngModel" required>
+        <mat-error *ngIf="pickupTimeCtrl.hasError('required')">
+          Toto pole je povinné
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+
+
+    <div fxLayoutAlign="start center" style="padding: 20px 0px 20px 0px;">
+      <button mat-raised-button color="primary">Přidat pokrm</button>
+    </div>
+
+
+
+    {{f.value | json}}
+
+
+
+  </form>
+</mat-card>

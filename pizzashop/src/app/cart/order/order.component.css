@@ -1,0 +1,16 @@
+mat-card {
+    min-height : 600px;
+}
+
+.order {
+    text-align: left;
+}
+
+.error {
+    color: #f44336;
+    display: flex;
+    clear: both;
+    padding: 10px;
+    font-weight: bold !important;
+    border: solid 2px #f44336;
+  }

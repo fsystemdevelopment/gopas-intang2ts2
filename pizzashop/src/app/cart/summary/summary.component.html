@@ -1,0 +1,19 @@
+<mat-card>
+
+  <h3 fxLayoutAlign="start center">Košík:</h3>
+
+  <div *ngIf="!orderArray || orderArray.length == 0">
+    V košíku nemáte žádnou objednávku
+  </div>
+  <div *ngFor="let order of orderArray">
+    <strong>{{order.amount}}x</strong> {{order.meal}} {{order.pickupTime}}
+    <button mat-icon-button (click)="removeItem(order.meal)">
+      <mat-icon aria-label="Remove item">remove_shopping_cart</mat-icon>
+    </button>
+  </div>
+
+  <div *ngIf="orderArray.length > 0" fxLayoutAlign="start center" style="padding: 20px 0px 20px 0px;">
+      <button mat-raised-button color="warn" (click)="saveOrder($event)">Objednat &raquo;</button>
+    </div>
+
+</mat-card>
