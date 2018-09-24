@@ -11,6 +11,9 @@ import { AppRoutingModule } from "./app-routing.module";
 import { DataService } from "./services/data.service";
 import { NextStepService } from "./services/next-step.service";
 
+//httpmodule
+import { HttpClientModule } from "@angular/common/http";
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -19,7 +22,8 @@ import { NextStepService } from "./services/next-step.service";
     SharedMaterialModule,
     CartModule,
     PaymentModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [DataService, NextStepService],
   bootstrap: [AppComponent]

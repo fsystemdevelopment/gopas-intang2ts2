@@ -24,12 +24,16 @@
     <div fxLayout="column">
       <mat-form-field >
         <input matInput name="pickupTime" placeholder="Čas vyzvednutí" type="text" [(ngModel)]="orderForm.pickupTime"
-          #pickupTimeCtrl="ngModel" required>
+          #pickupTimeCtrl="ngModel" required datedot datevalidation>
         <mat-error *ngIf="pickupTimeCtrl.hasError('required')">
           Toto pole je povinné
         </mat-error>
+        <mat-error *ngIf="pickupTimeCtrl.errors?.dateValidationDirectiveError">
+          {{pickupTimeCtrl?.errors?.dateValidationDirectiveError?.message | dateValidationMessage}}
+        </mat-error>
       </mat-form-field>
     </div>
+    
 
 
 
