@@ -1,3 +1,11 @@
-<p>
-  payment works!
-</p>
+<mat-card>
+  <p>
+    Objednate jste si:
+
+
+
+  </p>
+  <div *ngFor="let order of orderArray | async">
+    {{order.meal}} {{order.amount}}
+  </div>
+</mat-card>

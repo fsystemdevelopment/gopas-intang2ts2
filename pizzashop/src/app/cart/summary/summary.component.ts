@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, OnChanges } from "@angular/core";
 import * as _ from "lodash";
 import { Router } from "@angular/router";
+import { DataService } from "../../services/data.service";
+import { NextStepService } from "../../services/next-step.service";
 
 @Component({
   selector: "summary",
@@ -13,7 +15,7 @@ export class SummaryComponent implements OnInit, OnChanges {
   @Input("incomingOrder")
   orderData: any;
 
-  constructor(private router: Router) {}
+  constructor(private nextStepService: NextStepService, private dataService: DataService) {}
 
   ngOnInit() {
     this.orderArray = [];
@@ -44,9 +46,9 @@ export class SummaryComponent implements OnInit, OnChanges {
     }
   }
 
-  saveOrder(event) {
-    console.log(event);
-    this.router.navigate(['/payment'])
+  saveOrder() {
+    this.dataService.changeData(this.orderArray);
+    this.nextStepService.getState(true, '/payment')
   }
 
   ngOnChanges(changes) {

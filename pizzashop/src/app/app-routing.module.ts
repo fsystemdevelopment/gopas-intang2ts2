@@ -2,23 +2,26 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { CartComponent } from "./cart/cart.component"
 import { PaymentComponent } from "./payment/payment.component";
+import { NextStepGuard } from "./guards/next-step.guard";
 
 const routes: Routes = [
     {
         path: "",
         redirectTo: '/cart',
         pathMatch: "full",
-        component: "CartComponent"
     },
     {
         path: "cart",
         pathMatch: "full",
         component: CartComponent,
+
     },
     {
         path: "payment",
         pathMatch: "full",
-        component: PaymentComponent
+        component: PaymentComponent,
+        canActivate: [NextStepGuard],
+
     }
 ];
 
@@ -27,7 +30,7 @@ const routes: Routes = [
         RouterModule.forRoot(routes)
     ],
     exports: [RouterModule],
-    providers: [],
+    providers: [NextStepGuard],
 
 })
 export class AppRoutingModule { }

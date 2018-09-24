@@ -5,7 +5,11 @@ import { AppComponent } from "./app.component";
 import { SharedMaterialModule } from "./shared-material/shared-material.module";
 import { CartModule } from "./cart/cart.module";
 import { PaymentModule } from "./payment/payment.module";
-import { RouterModule } from "@angular/router";
+import { AppRoutingModule } from "./app-routing.module";
+
+//Services
+import { DataService } from "./services/data.service";
+import { NextStepService } from "./services/next-step.service";
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,9 +19,9 @@ import { RouterModule } from "@angular/router";
     SharedMaterialModule,
     CartModule,
     PaymentModule,
-    RouterModule
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [DataService, NextStepService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
